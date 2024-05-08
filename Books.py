@@ -6,7 +6,6 @@ class Books():
         self.author = author
         self.genre = genre
         self.isbn = isbn
-        self.is_available = True
 
     
 
@@ -15,8 +14,7 @@ class Books():
         return f"Title: {self.title}\nAuthor: {self.author}\nGenre: {self.genre}\nAvailability: {availability}"
  
 
-    def available_books(self):
-        self.is_available = not self.is_available
+    
 
 
     
@@ -26,6 +24,7 @@ class Library():
 
     def __init__(self):
         self.library = []
+        self.is_available = True
 
 
 
@@ -113,6 +112,18 @@ class Library():
                     print('--------------------')  # For readability between books
         except Exception as e: #Dylan/Travis proof
             print(f"An error occurred: {e}")
+
+
+    def available_books(self, is_available):
+        self.is_available = is_available
+
+
+    def check_available_books(self, title):
+        for book in self.library:
+            if book.title == title and book.is_available:
+                return True
+        return False
+
 
     #  I tried to add sorting the books by alphbetical order but it proved to be too
     #  complicated at this time. Definitely something I would like to figure
